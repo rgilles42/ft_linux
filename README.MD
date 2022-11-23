@@ -82,10 +82,11 @@ As per the security advisories on 23/11/2022, the following tarballs were altere
 - Python3:		from 3.10.6	to 3.10.8  
 - Python3-docs:	from 3.10.6	to 3.10.8  
 - OpenSSL:		from 3.0.5	to 3.0.7  
+- Linux:		from 5.19.2 to 6.0.8
 - Inetutils:	from 2.3	to 2.4  
 - Expat:		from 2.4.8	to 2.5.0  
 - D-Bus:		from 1.14.0	to 1.14.4  
 
-The Linux kernel will have to be dealt with at the proper time, but that's rather unimportant since the goal is to incorporate my own build of it anyway.  
-
 # CH4
+Had to move the systemwide bashrc `/etc/bash.bashrc` to `/etc/bash.vashrc.NOUSE`  
+# CH5
