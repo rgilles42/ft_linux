@@ -44,6 +44,7 @@ I will use the following partition scheme:
 - 35 	GiB	- ext4 - /		- /dev/nbd0p2  
 - 10.5	GiB	- ext4 - /home	- /dev/nbd0p3  
 - 4 	GiB	- swap - swap	- /dev/nbd0p4  
+
 All partitions mount with the `mount` default flags, which are `(rw,relatime)`  
 
 I created the mountpoint of the root `/mnt/lfs` owned by `root:root` with `rwxr-x-r-x` permissions.  
@@ -53,3 +54,38 @@ I have created a swap inside the VDI but will be using the one in my current sys
 //TODO: `/sbin/swapon` on own swap once system built?
 
 # Ch3
+## Diff between -subject and +lfs:  
+- +D-Bus  
+- -Eudev				=>Udev (present in LFS SysV version)
+- +Elfutils
+- +Jinja2
+- +Libffi
+- +MarkupSafe
+- +Meson
+- +Ninja
+- +OpenSSL
+- +Python
+- +Python Documentation
+- -Sysklogd				=>Systemd (present in LFS SysV version)
+- -Sysvinit				=>Systemd (present in LFS SysV version)
+- +Systemd
+- +Systemd Man Pages
+- +Tcl Documentation
+- -Udev-lfs				=>Udev (present in LFS SysV version)
+- +Wheel
+- +Zstd
+## Tarballs
+Got all the required tarballs with the `wget-list` from https://www.linuxfromscratch.org/lfs/downloads/stable-systemd/wget-list  
+Removed an apparently undesired `sysvinit-304` patch from it  
+As per the security advisories on 23/11/2022, the following tarballs were altered from the stable ref:  
+- zlib:			from 1-2.12	to 1-2.13  
+- Python3:		from 3.10.6	to 3.10.8  
+- Python3-docs:	from 3.10.6	to 3.10.8  
+- OpenSSL:		from 3.0.5	to 3.0.7  
+- Inetutils:	from 2.3	to 2.4  
+- Expat:		from 2.4.8	to 2.5.0  
+- D-Bus:		from 1.14.0	to 1.14.4  
+
+The Linux kernel will have to be dealt with at the proper time, but that's rather unimportant since the goal is to incorporate my own build of it anyway.  
+
+# CH4
