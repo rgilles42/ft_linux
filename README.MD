@@ -88,5 +88,34 @@ As per the security advisories on 23/11/2022, the following tarballs were altere
 - D-Bus:		from 1.14.0	to 1.14.4  
 
 # CH4
-Had to move the systemwide bashrc `/etc/bash.bashrc` to `/etc/bash.vashrc.NOUSE`  
-# CH5
+Had to move the systemwide bashrc `/etc/bash.bashrc` to `/etc/bash.bashrc.NOUSE`  
+# CH5, 6, 7
+For each package, as user `lfs`:  
+- `tar -xf <package>.tar.xz`
+- Change to the directory created when the package was extracted.
+- Follow the book's instructions for building the package.
+- Change back to the sources directory.
+- Delete the extracted source directory unless instructed otherwise.
+
+//TODO: replace `$(hostname)` with `rgilles` in /etc/hosts which will be the future hostname of the distro.
+
+After the end of Ch7, I unmounted all the virtual FSs, saved the $LFS root to a tar on the host, and remounted them.
+# CH8
+//TODO: Check back 8.2.3 for deploying inside vbox
+
+Installed locales separately with provided list.
+
+`pip3 install` commands in both LFS & BLFS should be run as the root user unless it's for a Python virtual environment.
+
+I wrote these nifty functions in bash.  
+```sh
+myunpack () 
+{ 
+    tar -xf $1 && cd $(basename $1 .tar.${1##*.})
+}
+mygetout () 
+{ 
+    CURR=$(pwd);
+    cd .. && rm -rf $CURR
+}
+```
