@@ -1,4 +1,5 @@
 #!/bin/bash
+LFS=/mnt/lfs
 echo Mounting /dev/nbd0 on $LFS
 sudo mount -v -t ext4 /dev/nbd0p2 $LFS
 sudo mount -v -t ext4 /dev/nbd0p1 $LFS/boot
