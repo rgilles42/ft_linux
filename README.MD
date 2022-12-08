@@ -208,12 +208,12 @@ extra-cmake-modules
             GnuTLS
             libusb
                 xmlto
-            xdg-utils               //TODO: Install Xorg Apps at some time
+            xdg-utils
                 lcms
                             libssh2
                             llvm
                         rustc
-                    JS
+                    JS <-
                 polkit
                 SQLite
                 libgudev
@@ -279,8 +279,6 @@ Phonon
         x264
     gst-plugin-ugly
 phonon-backend-gstreamer
-### phonon-backend-vlc
-Skipped due to complexity of vlc
 ### Polkit-Qt
 ### libdbusmenu-qt
 ### Plasma-wayland-protocols
@@ -349,4 +347,64 @@ kio-extras
 ### Okular
         OpenJPEG
     Poppler
-### 
+### libkdcraw
+    libraw
+### Gwenview
+        kColorPicker
+    kimageannotator
+### Plasma 5
+        CrackLib <-
+    libpwquality
+    libqalculate
+        BlueZ       //TODO: kernel
+        sbc
+        sdl2
+            glu
+        v4l-utils
+    pipewire
+    taglib
+    xcb-util-cursor
+    ffftwcd
+        libevdev       //TODO: kernel
+    libinput            //TODO: kernel
+    libpcap
+    lm-sensors          //TODO: kernel
+    pciutils
+    AccountsService
+    smartmontools
+    libxcvt (!)
+                    xbitmaps
+                Xorg Apps
+            xcursor-themes
+        Xorg Fonts
+        libtirpc
+    XWayland (!)
+Plasma
+
+### Xorg Server
+
+xf86-libinput
+xf86-video-fbdev
+xf86-video-vmware   //TODO: kernel
+Xorg Legacy Fonts
+twm
+xterm
+xclock
+xinit
+
+## GDB
+    six
+gdb
+
+## Git
+        libassuan
+        libksba
+        npth
+        pinentry
+    GnuPG
+    Tk
+## VBox Guests Additions
+Make sure that every VBOX kernel module is shipped as a module and not embedded.
+Run as sudo the VBoxLinuxAdditions.run executable from the host shipped disk.
+## Audio
+alsa-utils
