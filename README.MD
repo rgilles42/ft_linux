@@ -47,7 +47,6 @@ I created the mountpoint of the root `/mnt/lfs` owned by `root:root` with `rwxr-
 Same for the mountpoints `/mnt/lfs/home` and `/mnt/lfs/boot` inside the lfs root  
 
 I have created a swap inside the VDI but will be using the one in my current system.  
-//TODO: `/sbin/swapon` on own swap once system built?
 # Ch3
 ## Diff between -subject and +lfs:  
 - +D-Bus  
@@ -90,13 +89,8 @@ For each package, as user `lfs`:
 - Follow the book's instructions for building the package.
 - Change back to the sources directory.
 - Delete the extracted source directory unless instructed otherwise.
-
-//TODO: replace `$(hostname)` with `rgilles` in /etc/hosts which will be the future hostname of the distro.
-
 After the end of Ch7, I unmounted all the virtual FSs, saved the $LFS root to a tar on the host, and remounted them.
 # CH8
-//TODO: Check back 8.2.3 for deploying inside vbox
-
 Installed locales separately with provided list.
 
 `pip3 install` commands in both LFS & BLFS should be run as the root user unless it's for a Python virtual environment.
@@ -134,7 +128,6 @@ VirtualBox is set up to advertise UTC time so I'm not touching anything.
 I ran `make defconfigs`  
 I set `-rgilles` to Local version  
 I followed the things recommended by LFS, and added a few things that looked good and safe, with virtualization in mind.  
-//TODO: ADD CONFIG_INPUT_MOUSEDEV_PSAUX
 # Ch11
 `/etc/profile` loads anything in `/etc/profile.d`
 `/root/.profile` loads `./.bashrc`
@@ -146,7 +139,6 @@ Fetch the systemd-units archive.
             libtasn
         p11-kit
     make-ca
-wget
 ## GPM
 ## Lynx
 ## Sudo
@@ -161,7 +153,6 @@ Path to `xauth` set to `usr/bin/xauth` in `/etc/ssh/sshd_config`
         libarchive
         cURL
     CMake
-extra-cmake-modules
 ### Phonon
             docbook-xsl-nons
                 sgml-common
@@ -192,7 +183,7 @@ extra-cmake-modules
                 libvorbis
                 FLAC
                 Opus
-            alsa-lib                //TODO:Check kernel module status
+            alsa-lib                //Mind kernel
             Speex
             libsndfile
                 Linux-PAM
@@ -256,7 +247,6 @@ extra-cmake-modules
             Pango
         gst-plugin-base
     Qt
-Phonon
 ### phonon-backend-gstreamer
         NASM
         mpg123
@@ -278,7 +268,6 @@ Phonon
         liba52
         x264
     gst-plugin-ugly
-phonon-backend-gstreamer
 ### Polkit-Qt
 ### libdbusmenu-qt
 ### Plasma-wayland-protocols
@@ -310,8 +299,8 @@ phonon-backend-gstreamer
         jansson
         libndp
             libnl
-        wpa_supplicant          //TODO: kernel
-        UPower                  //TODO: kernel
+        wpa_supplicant          //Mind kernel
+        UPower                  //Mind kernel
             PyCairo
         PyGObject
             NSPR
@@ -320,7 +309,7 @@ phonon-backend-gstreamer
             slang
         newt
         DHCP                    //TODO: install systemdunit and enable?, switch off systemd-networkd
-        iptables                //TODO: kernel //TODO: config + systemd?
+        iptables                //Mind kernel //TODO: config + systemd?
         oxygen font
         noto font
     NetworkManager              //TODO: systemd?
@@ -329,7 +318,6 @@ phonon-backend-gstreamer
         lxml
     breeze-icons
     oxygen-icons
-frameworks
 ### Ark
     cpio
     p7zip
@@ -337,10 +325,8 @@ frameworks
     Zip
 ### KMix
     libcanberra
-kmix
 ### kio-extras
     kdsoap
-kio-extras
 ### konsole
 ### libkexiv2
     exiv2
@@ -356,7 +342,7 @@ kio-extras
         CrackLib <-
     libpwquality
     libqalculate
-        BlueZ       //TODO: kernel
+        BlueZ       //Mind kernel
         sbc
         sdl2
             glu
@@ -365,10 +351,10 @@ kio-extras
     taglib
     xcb-util-cursor
     ffftwcd
-        libevdev       //TODO: kernel
-    libinput            //TODO: kernel
+        libevdev       //Mind kernel
+    libinput            //Mind kernel
     libpcap
-    lm-sensors          //TODO: kernel
+    lm-sensors          //Mind kernel
     pciutils
     AccountsService
     smartmontools
@@ -379,23 +365,18 @@ kio-extras
         Xorg Fonts
         libtirpc
     XWayland (!)
-Plasma
-
 ### Xorg Server
-
-xf86-libinput
-xf86-video-fbdev
-xf86-video-vmware   //TODO: kernel
-Xorg Legacy Fonts
-twm
-xterm
-xclock
-xinit
-
+    xf86-libinput
+    xf86-video-fbdev
+    xf86-video-vmware   //Mind kernel
+    Xorg Legacy Fonts
+    twm
+    xterm
+    xclock
+    xinit
+Make sure desired user is part of group `video`
 ## GDB
     six
-gdb
-
 ## Git
         libassuan
         libksba
@@ -403,8 +384,8 @@ gdb
         pinentry
     GnuPG
     Tk
+## alsa-utils
+Make sure desired user is part of group `audio`
 ## VBox Guests Additions
 Make sure that every VBOX kernel module is shipped as a module and not embedded.
 Run as sudo the VBoxLinuxAdditions.run executable from the host shipped disk.
-## Audio
-alsa-utils
